@@ -9,19 +9,6 @@
                 event: 'input'
             }
         },
-        computed: {
-            searchText: function() {
-                return store.searchText
-            }
-        },
-        methods: {
-            logSearchText() {
-                console.log(this.searchText)
-            }
-        },
-        mounted() {
-            console.log("vue ok")
-        }
     }
 </script>
 
