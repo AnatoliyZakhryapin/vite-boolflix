@@ -18,6 +18,7 @@
   .page-main {
     background-color: $bg-main;
     flex-grow: 1;
+    padding: $p-base;
     
     .hello {
         color: red;
