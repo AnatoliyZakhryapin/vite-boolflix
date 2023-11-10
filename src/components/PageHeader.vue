@@ -16,9 +16,9 @@
     @use '../components/style/partial/varibils' as *;
 
     .page-header {
-        background-color: $background-header;
-        color: $font-color-base;
-        padding: $padding-base;
+        background-color: $bg-header;
+        color: $f-color-base;
+        padding: $p-base;
         
         .row {
             justify-content: space-between;

@@ -2,11 +2,26 @@
 </script>
 
 <template>
-  <div class="hello">Hello</div>
+    <div class="page-main">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="hello">Hello i am MAIN</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  @use '../components/style/partial/varibils' as *;
+  .page-main {
+    background-color: $bg-main;
+    flex-grow: 1;
+    
     .hello {
         color: red;
-    }
+    }  
+  }
+    
 </style>
