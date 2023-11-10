@@ -24,7 +24,7 @@ export default {
     },
     methods: {
       fetchMovies() {
-        console.log("go fetch", "/", this.query )
+        // get movies date
         axios.get('https://api.themoviedb.org/3/search/movie',{
           params: {
             api_key: this.API_KEY,
@@ -32,6 +32,16 @@ export default {
           }
         }).then(res => {
           this.store.movies = res.data.results;
+        });
+
+        // get series date 
+        axios.get('https://api.themoviedb.org/3/search/tv',{
+          params: {
+            api_key: this.API_KEY,
+            query: this.query,
+          }
+        }).then(res => {
+          this.store.series = res.data.results;
         })
       }
     }
