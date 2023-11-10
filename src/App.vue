@@ -8,6 +8,7 @@ export default {
     data() {
         return {
           store: store,
+          API_KEY: ea170e7a3ae23ecef31df6cf2b986c79
         }
     },
     components: { 
