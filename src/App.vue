@@ -1,13 +1,14 @@
 <script setup>
-import PageMain from './components/PageMain.vue';
-import PageHeader from './components/PageHeader.vue';
+import AppMain from './components/AppMain.vue';
+import AppHeader from './components/AppHeader.vue';
 </script>
 
 <template>
-  <PageHeader/>
-  <PageMain/>
+  <AppHeader/>
+  <AppMain/>
 </template>
 
 <style lang="scss">
   @use './components/style/general.scss' as *;
+
 </style>
