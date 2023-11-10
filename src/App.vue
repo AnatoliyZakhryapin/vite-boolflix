@@ -31,7 +31,7 @@ export default {
             query: this.query,
           }
         }).then(res => {
-          console.log(res.data)
+          this.store.movies = res.data.results;
         })
       }
     }
