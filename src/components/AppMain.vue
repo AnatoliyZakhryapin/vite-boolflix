@@ -1,4 +1,11 @@
-<script setup>
+<script>
+import AppCard from './AppCard.vue'
+
+export default {
+  components: {
+    AppCard
+  }
+}
 </script>
 
 <template>
@@ -7,6 +14,7 @@
         <div class="row">
           <div class="col">
             <h1 class="hello">Hello i am MAIN</h1>
+            <AppCard/>
           </div>
         </div>
       </div>
