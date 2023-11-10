@@ -1,7 +1,22 @@
 <script>
 import AppCard from './AppCard.vue'
+import { store } from '../store';
 
 export default {
+  data() {
+    return {
+      store: store,
+      title: "title",
+      titleOrigin: "titleOrigin",
+      language: "langu",
+      voto: 2
+    }
+  },
+  computed: {
+    movTitle: function() {
+      return this.store.movies
+    }
+  },
   components: {
     AppCard
   }
@@ -13,8 +28,38 @@ export default {
       <div class="container">
         <div class="row">
           <div class="col">
-            <h1 class="hello">Hello i am MAIN</h1>
-            <AppCard/>
+            <h1 class="section-title">Movies</h1>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col" v-for="card in store.movies">
+            <AppCard
+              :title="card.title"
+              :titleOrigin="card.original_title"
+              :language="card.original_language"
+              :vote="card.vote_average"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="section-title">Series</h1>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col" v-for="card in store.series">
+            <AppCard
+              :title="card.name"
+              :titleOrigin="card.original_name"
+              :language="card.original_language"
+              :vote="card.vote_average"
+            />
           </div>
         </div>
       </div>
@@ -28,9 +73,17 @@ export default {
     flex-grow: 1;
     padding: $p-base;
     
-    .hello {
+    .section-title {
         color: red;
-    }  
+    }
+
+    .row {
+      row-gap: 20px;
+    }
+    .col {
+      width: 25%;
+      display: flex;
+    }
   }
     
 </style>

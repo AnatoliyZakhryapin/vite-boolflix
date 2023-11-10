@@ -19,10 +19,10 @@ export default {
 <template>
     <div class="card">
         <ol>
-            <li>title {{ title }}</li>
-            <li>title origin {{ titleOrigin }}</li>
-            <li>lingua {{ language }}</li>
-            <li>voto {{ vote }}</li>
+            <li>{{ title }}</li>
+            <li>{{ titleOrigin }}</li>
+            <li>{{ language }}</li>
+            <li>{{ vote }}</li>
         </ol>
     </div>
 </template>
@@ -33,5 +33,6 @@ export default {
         color: $f-color-base;
         padding: 10px;
         border: 1px solid white;
+        flex-grow: 1;
     }
 </style>
