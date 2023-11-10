@@ -1,4 +1,28 @@
-<script setup>
+<script>
+
+    import {store} from '../store';
+
+    export default {
+        data() {
+            return {
+                store: store,
+                event: 'input'
+            }
+        },
+        computed: {
+            searchText: function() {
+                return store.searchText
+            }
+        },
+        methods: {
+            logSearchText() {
+                console.log(this.searchText)
+            }
+        },
+        mounted() {
+            console.log("vue ok")
+        }
+    }
 </script>
 
 <template>
@@ -6,7 +30,13 @@
         <div class="container">
             <div class="row">
                 <div class="col"><div class="logo">BOOLFIX</div></div>
-                <div class="col"><input type="text"></div>
+                <div class="col">
+                    <input 
+                        type="text" 
+                        v-model="store.searchText"
+                        @[event]="logSearchText()"    
+                    > 
+                </div>
             </div>
         </div>    
     </div>
