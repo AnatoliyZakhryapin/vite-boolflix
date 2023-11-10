@@ -4,6 +4,8 @@ import AppMain from './components/AppMain.vue';
 import AppHeader from './components/AppHeader.vue';
 import { store } from './store';
 
+import axios from 'axios'
+
 export default {
     data() {
         return {
@@ -23,7 +25,14 @@ export default {
     methods: {
       fetchMovies() {
         console.log("go fetch", "/", this.query )
-
+        axios.get('https://api.themoviedb.org/3/search/movie',{
+          params: {
+            api_key: this.API_KEY,
+            query: this.query,
+          }
+        }).then(res => {
+          console.log(res.data)
+        })
       }
     }
 }
