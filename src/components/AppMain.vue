@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="page-main">
+    <div class="app-main">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
   @use '../components/style/partial/varibils' as *;
-  .page-main {
+  .app-main {
     background-color: $bg-main;
     flex-grow: 1;
     padding: $p-base;

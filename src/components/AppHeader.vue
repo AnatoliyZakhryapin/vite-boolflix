@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="page-header">
+    <div class="app-header">
         <div class="container">
             <div class="row">
                 <div class="col"><div class="logo">BOOLFIX</div></div>
@@ -15,7 +15,7 @@
 <style lang="scss" scoped>
     @use '../components/style/partial/varibils' as *;
 
-    .page-header {
+    .app-header {
         background-color: $bg-header;
         color: $f-color-base;
         padding: $p-base;
