@@ -17,8 +17,18 @@ a {
     text-decoration: none;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
+}
+
+[class^="col"] {
+    padding-left: 10px;
+    padding-right: 10px;
 }
   
