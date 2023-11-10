@@ -34,7 +34,7 @@
                     <input 
                         type="text" 
                         v-model="store.searchText"
-                        @[event]="logSearchText()"    
+                        @[event]="$emit('performSearch')"    
                     > 
                 </div>
             </div>
