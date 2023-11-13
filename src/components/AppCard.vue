@@ -2,6 +2,12 @@
 import LangFlag from 'vue-lang-code-flags'
 
 export default {
+    data() {
+        return {
+            posterURL: "https://image.tmdb.org/t/p/",
+            sizePoster: "w342"
+        }   
+    },  
     components: {
         LangFlag
     },
@@ -32,6 +38,15 @@ export default {
         vote() {
             return this.item.vote_average
         },
+        poster_path() {
+            return this.item.poster_path
+        }
+    },
+    methods: {
+        getPosterPathComplete(size) {
+            const pathComplete = this.posterURL + size + this.poster_path
+            return pathComplete;
+        }
     }
 }
 </script>
@@ -39,7 +54,9 @@ export default {
 <template>
     <div class="card">
         <ol>
-            <li></li>
+            <li class="poster">
+                <img :src="getPosterPathComplete('w342')">
+            </li>
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
             <li class="language">
@@ -74,4 +91,4 @@ export default {
             }
         }  
     }
-</style>
+</style>-
