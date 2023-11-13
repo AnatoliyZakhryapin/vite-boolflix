@@ -37,12 +37,7 @@ export default {
       <div class="container">
         <div class="row">
           <div class="col" v-for="card in movies">
-            <AppCard
-              :title="card.title"
-              :titleOrigin="card.original_title"
-              :language="card.original_language"
-              :vote="card.vote_average"
-            />
+            <AppCard :item="card"/>
           </div>
         </div>
       </div>
@@ -56,12 +51,7 @@ export default {
       <div class="container">
         <div class="row">
           <div class="col" v-for="card in series">
-            <AppCard
-              :item="card"
-              :titleOrigin="card.original_name"
-              :language="card.original_language"
-              :vote="card.vote_average"
-            />
+            <AppCard :item="card"/>
           </div>
         </div>
       </div>
