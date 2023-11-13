@@ -6,17 +6,40 @@ export default {
         LangFlag
     },
     props: {
-        title: String,
-        titleOrigin: String,
-        language: String,
-        vote: Number
+        item: {
+            type: Object,
+            required: true
+        }
     },
+    computed: {
+        title() {
+            if(this.item.title) {
+                return this.item.title
+            } else if (this.item.name) {
+                return this.item.name
+            }
+        },
+        titleOrigin() {
+            if(this.item.original_title) {
+                return this.item.original_title
+            } else if (this.item.original_name) {
+                return this.item.original_name
+            }
+        },
+        language() {
+            return this.item.original_language
+        },
+        vote() {
+            return this.item.vote_average
+        },
+    }
 }
 </script>
 
 <template>
     <div class="card">
         <ol>
+            <li></li>
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
             <li> {{ language }}</li>

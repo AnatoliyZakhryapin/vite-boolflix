@@ -57,7 +57,7 @@ export default {
         <div class="row">
           <div class="col" v-for="card in series">
             <AppCard
-              :title="card.name"
+              :item="card"
               :titleOrigin="card.original_name"
               :language="card.original_language"
               :vote="card.vote_average"
