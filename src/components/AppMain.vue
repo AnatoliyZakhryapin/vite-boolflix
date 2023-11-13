@@ -5,7 +5,6 @@ import { store } from '../store';
 export default {
   data() {
     return {
-      store: store,
       title: "title",
       titleOrigin: "titleOrigin",
       language: "langu",
@@ -13,8 +12,11 @@ export default {
     }
   },
   computed: {
-    movTitle: function() {
-      return this.store.movies
+    movies: function() {
+      return store.movies
+    },
+    series: function() {
+      return store.series
     }
   },
   components: {
@@ -34,7 +36,7 @@ export default {
       </div>
       <div class="container">
         <div class="row">
-          <div class="col" v-for="card in store.movies">
+          <div class="col" v-for="card in movies">
             <AppCard
               :title="card.title"
               :titleOrigin="card.original_title"
@@ -53,7 +55,7 @@ export default {
       </div>
       <div class="container">
         <div class="row">
-          <div class="col" v-for="card in store.series">
+          <div class="col" v-for="card in series">
             <AppCard
               :title="card.name"
               :titleOrigin="card.original_name"
