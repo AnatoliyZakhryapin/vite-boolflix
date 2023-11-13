@@ -20,7 +20,7 @@ export default {
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
             <li> {{ language }}</li>
-            <li> <lang-flag :iso='language'/></li>
+            <li> <lang-flag :iso='language' :title='language'/></li>
             <li>{{ vote }}</li>
         </ol>
     </div>
@@ -33,5 +33,10 @@ export default {
         padding: 10px;
         border: 1px solid white;
         flex-grow: 1;
+
+        span.flag-icon-undefined {
+            display: none;
+            
+        }
     }
 </style>
