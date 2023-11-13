@@ -1,27 +1,26 @@
 <script>
+import LangFlag from 'vue-lang-code-flags'
 
 export default {
-    data() {
-        return {
-
-        }
+    components: {
+        LangFlag
     },
     props: {
         title: String,
         titleOrigin: String,
         language: String,
         vote: Number
-    }
+    },
 }
 </script>
-
 
 <template>
     <div class="card">
         <ol>
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
-            <li>{{ language }}</li>
+            <li> {{ language }}</li>
+            <li> <lang-flag :iso='language'/></li>
             <li>{{ vote }}</li>
         </ol>
     </div>
