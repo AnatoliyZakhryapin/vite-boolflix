@@ -57,4 +57,7 @@ export default {
 <style lang="scss">
   @use './components/style/general.scss' as *;
 
+  .vote-star {
+    color: yellow;
+  }
 </style>

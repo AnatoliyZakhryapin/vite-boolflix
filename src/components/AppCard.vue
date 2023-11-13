@@ -36,7 +36,13 @@ export default {
             return this.item.original_language
         },
         vote() {
-            return this.item.vote_average
+            let  voteRound;
+            if(this.item.vote_average) {
+                voteRound = Math.round(this.item.vote_average / 2 )
+            } else {
+                voteRound = 0;
+            }
+            return voteRound;
         },
         poster_path() {
             return this.item.poster_path
@@ -46,6 +52,21 @@ export default {
         getPosterPathComplete(size) {
             const pathComplete = this.posterURL + size + this.poster_path
             return pathComplete;
+        },
+        icon() {
+            let icon = []
+            for(i = 0; i < this.vote; i++) {
+                icon.puch('<font-awesome-icon icon="fa-solid fa-star"')
+            }   
+        },
+        getCicleForStar() {
+            let qtyCicle;
+            if(this.vote === 0) {
+                qtyCicle = 5;
+            } else {
+                qtyCicle = 5 - this.vote;
+            }
+            return qtyCicle;
         }
     }
 }
@@ -55,7 +76,7 @@ export default {
     <div class="card">
         <ol>
             <li class="poster">
-                <img :src="getPosterPathComplete('w342')">
+                <img :src="getPosterPathComplete('w185')">
             </li>
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
@@ -65,7 +86,16 @@ export default {
                 </span>
                 <span class="language-text">Lingua: {{ language.toUpperCase() }}</span>
             </li>
-            <li>{{ vote }}</li>
+            <li class="vote">
+                Voto:
+                <span class="vote-star">
+                    <font-awesome-icon icon="fa-solid fa-star"  v-for="n in vote"/>
+                </span>
+                <span class="not-vote-star">
+                    <font-awesome-icon icon="fa-regular fa-star"  v-for="n in getCicleForStar()"/>
+                </span>
+    
+            </li>
         </ol>
     </div>
 </template>
