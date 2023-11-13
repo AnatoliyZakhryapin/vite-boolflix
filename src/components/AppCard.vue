@@ -42,12 +42,17 @@ export default {
             <li></li>
             <li>{{ title }}</li>
             <li>{{ titleOrigin }}</li>
-            <li> {{ language }}</li>
-            <li> <lang-flag :iso='language' :title='language'/></li>
+            <li class="language">
+                <span class="language-icon">Lingua: <lang-flag :iso='language' :title='language'/>
+                    
+                </span>
+                <span class="language-text">Lingua: {{ language.toUpperCase() }}</span>
+            </li>
             <li>{{ vote }}</li>
         </ol>
     </div>
 </template>
+<span></span>
 
 <style lang="scss">
     @use './style/partial/varibils' as *;
@@ -57,9 +62,16 @@ export default {
         border: 1px solid white;
         flex-grow: 1;
 
-        span.flag-icon-undefined {
-            display: none;
-            
-        }
+        .language {
+            span.language-icon:has(> span.flag-icon-undefined) { 
+                display: none;
+            }
+            .language-text {
+                display: none;
+            }  
+            span.language-icon:has(> span.flag-icon-undefined)+.language-text { 
+                display: block;
+            }
+        }  
     }
 </style>
