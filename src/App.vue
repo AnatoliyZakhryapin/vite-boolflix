@@ -53,6 +53,11 @@ export default {
         return this.store.isActiveInput = false;
       }
     }
+  },
+  created() {
+    document.body.addEventListener("click",() => {
+      this.getNotActiveInput()
+    })
   }
 }
 
@@ -61,9 +66,8 @@ export default {
 <template >
   <AppHeader 
     @performSearch="fetchMovies"
-    @click.stop="getNotActiveInput()"
   />
-  <AppMain @click.stop="getNotActiveInput()"/>
+  <AppMain/>
 </template>
 
 <style lang="scss">
