@@ -22,6 +22,13 @@
             searchText() {
                 return this.store.searchText;
             },
+            filtrGenresList() {
+                if(this.store.movies.length === 0 && this.store.series.length === 0 ){
+                    this.store.filtrGenresList = [];
+                    this.store.filtrActive = []
+                }
+                return this.store.filtrGenresList;
+            },
         },
         methods: {
             getActiveInput() {
@@ -37,14 +44,32 @@
             },
             clearSearchText() {
                 return this.store.searchText = "";
+            },
+            addToflitrActive(gener) {
+                if(this.store.filtrActive.includes(gener) === false) {
+                    this.store.filtrActive.push(gener)
+                    console.log("add", gener)
+                } else {
+                    let index = this.store.filtrActive.indexOf(gener)
+                    console.log(index)
+                    this.store.filtrActive.splice(index, 1)
+                    console.log("delete", gener)
+                }
+                console.log(this.store.filtrActive)
+            },
+            isActiveFiltr(gener) {
+                if(this.store.filtrActive.includes(gener)) {
+                    return true
+                }
             }
-        }
+            
+        },
     }
 </script>
 
 <template>
     <div class="app-header">
-        <div class="container">
+        <div class="container header">
             <div class="row">
                 <div class="col"><div class="logo">BOOLFIX</div></div>
                 <div class="col">
@@ -82,7 +107,32 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>  
+        <div v-if="searchText" class="container search-filter">
+            <div class="row">
+                <div class="col">
+                    <div class="filter">
+                        <h3>
+                            Filter 
+                            <font-awesome-icon 
+                                icon="fa-solid fa-filter" 
+                            />
+                        </h3>
+                        <ul class="filtr">
+                           Geners:
+                            <li 
+                                class="filtr-item" 
+                                :class="{'active' : isActiveFiltr(gener) }"
+                                @click=" addToflitrActive(gener)"
+                                v-for="gener in filtrGenresList"
+                            >
+                                {{ gener }} ||
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
 </template>
   
@@ -170,6 +220,15 @@
             color: $logo-color;
             font-size: 36px;
             font-weight: bold;
+        }
+        .search-filter {
+            .filtr-item {
+                display: inline;
+                color: $f-color-off;
+                &.active {
+                    color: white;
+                }
+            }
         }
     }
 

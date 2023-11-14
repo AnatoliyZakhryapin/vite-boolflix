@@ -24,6 +24,11 @@ export default {
   },
   components: {
     AppCard
+  },
+  methods: {
+    isVisibleCard() {
+    
+    }
   }
 }
 </script>
@@ -38,9 +43,11 @@ export default {
             </div>
           </div>
           <div class="row">
-            <div class="col" v-for="card in movies">
-              <AppCard :item="card"/>
-            </div>
+            
+              <div class="col" v-for="card in movies">
+                <AppCard :item="card" />
+              </div>
+          
           </div>
         </div>
         <div class="container series">
@@ -51,7 +58,7 @@ export default {
           </div>
           <div class="row">
             <div class="col" v-for="card in series">
-              <AppCard :item="card"/>
+              <AppCard :item="card" />
             </div>
           </div>
         </div>
@@ -66,7 +73,7 @@ export default {
     background-color: $bg-main;
     flex-grow: 1;
     padding: $p-base;
-    padding-top: 100px;
+    padding-top: 130px;
     
     .col:has(> .section-title){
       width: 100%;

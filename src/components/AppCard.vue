@@ -62,6 +62,9 @@ export default {
         TVGenresList() {
             return this.store.TVGenresList;
         },
+        filtrGenresList() {
+            return this.store.filtrGenresList;
+        }
     },
     methods: {
         getPosterPathComplete(size) {
@@ -90,6 +93,8 @@ export default {
             return textToStamp;
         },
         getGenrsNameToCard() {
+            console.log(this.item.title)
+            console.log(this.item.name)
             if(this.item.title) {
                 for(let i = 0; i < this.moviesGenresList.length; i++ ){
                     for(let x = 0; x < this.genre_ids.length; x++){
@@ -111,11 +116,21 @@ export default {
         getGenNumber(index) {
             const number = index + 1;
             return number;
+        },
+        pushGenersNameToFiltrArray() {
+            for(let i = 0; i < this.genrsName.length; i++){
+                if(!this.filtrGenresList.includes(this.genrsName[i].name)){
+                    this.filtrGenresList.push(this.genrsName[i].name)
+                }
+            }     
         }
     },
     created() {
         this.getGenrsNameToCard()
-        // console.log("geners name",this.genrsName)
+        // this.pushGenersNameToFiltrArray()
+    },
+    mounted() {
+        // this.pushGenersNameToFiltrArray();
     }
 }
 </script>

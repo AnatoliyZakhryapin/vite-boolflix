@@ -4,7 +4,9 @@ export const store = reactive({
     searchText: "",
     movies: [],
     series: [],
-    moviesGenresList: [
+    moviesGenresList: [],
+    TVGenresList: [],
+    moviesGenresListssss: [
         {id: 28, name: "Action"},
         {id: 12, name: "Adventure"},
         {id: 16, name: "Animation"},
@@ -25,7 +27,7 @@ export const store = reactive({
         {id: 10752, name: "War"},
         {id: 37, name: "Western"}
     ],
-    TVGenresList: [
+    TVGenresListssss: [
         {id: 10759, name: "Action & Adventure"},
         {id: 16, name: "Animation"},
         {id: 35, name: "Comedy"},
@@ -43,6 +45,7 @@ export const store = reactive({
         {id: 10768, name: "War & Politics"},
         {id: 37, name: "Western"}
     ],
+
     headerMenu: {
         links: [
             {
@@ -72,5 +75,7 @@ export const store = reactive({
         ]
     },
     isActiveInput: false,
+    filtrGenresList: [],
+    filtrActive: []
 })
 

@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     fetchMovies() {
+      console.log("FETCH MOVIES")
       // get movies date
       axios.get('https://api.themoviedb.org/3/search/movie',{
         params: {
@@ -35,6 +36,10 @@ export default {
         }
       }).then(res => {
         this.store.movies = res.data.results;
+      }).finally( () => {
+        console.log("MOVIES GENRES");
+        this.store.filtrGenresList = [];
+        this.updateFiltrGenresList(this.store.movies);
       });
 
       // get series date 
@@ -45,32 +50,47 @@ export default {
         }
       }).then(res => {
         this.store.series = res.data.results;
+        // this.updateGenresList(this.store.series);
       })
     },
-    // fetchGenrs() {
-    //     // get movies genres list
-    //     axios.get('https://api.themoviedb.org/3/genre/movie/list?',{
-    //       params: {
-    //       api_key: this.API_KEY,
-    //       language: "en",
-    //     }
-    //     }).then(res => {
-    //       // this.store.moviesGenresList = res.data.genres;
-    //       consol.log("movie list", res.data.genrs)
-    //     });
+    updateFiltrGenresList(items) {
+      items.forEach(item => {
+        const genre_ids = item.genre_ids;
+        genre_ids.forEach(genre_id => {
+          // console.log(genre_id);
+          const genre = this.store.moviesGenresList.find(genre => genre.id === genre_id);
+          console.log(genre);
+          if(genre) {
+            if(!this.store.filtrGenresList.includes(genre.name)) {
+                this.store.filtrGenresList.push(genre.name);
+            }
+          }
+        })
+      })
+    },
+    fetchGenrs() {
+        // get movies genres list
+        axios.get('https://api.themoviedb.org/3/genre/movie/list?',{
+          params: {
+          api_key: this.API_KEY,
+          language: "en",
+        }
+        }).then(res => {
+          this.store.moviesGenresList = res.data.genres;
+          console.log("movie list", this.store.moviesGenresList)
+        });
 
-    //     // get TV genres list
-    //     axios.get('https://api.themoviedb.org/3/genre/tv/list?',{
-    //       params: {
-    //       api_key: this.API_KEY,
-    //       language: "en",
-    //     }
-    //     }).then(res => {
-    //       // this.store.TVGenresList = res.data.genres;
-    //       consol.log("TV list", res.data.genrs)
-    //     });
-        
-    // },
+        // get TV genres list
+        axios.get('https://api.themoviedb.org/3/genre/tv/list?',{
+          params: {
+          api_key: this.API_KEY,
+          language: "en",
+        }
+        }).then(res => {
+          this.store.TVGenresList = res.data.genres;
+          console.log("TV list", this.store.TVGenresList)
+        });
+    },
     getNotActiveInput() {
       if(this.searchText.length < 1) {
         console.log("out")
@@ -82,6 +102,7 @@ export default {
     document.body.addEventListener("click",() => {
       this.getNotActiveInput()
     })
+    this.fetchGenrs();
   }
 }
 

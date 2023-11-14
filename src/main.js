@@ -10,7 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { 
 	faStar as fasStar,
 	faMagnifyingGlass as fasMagnifyingGlass,
-	faXmark as fasXmark
+	faXmark as fasXmark,
+	faFilter as fasFilter
 } from '@fortawesome/free-solid-svg-icons'
 import {
     faStar as farStar,
@@ -24,6 +25,7 @@ library.add(
 	fasMagnifyingGlass,
 	fasXmark,
 	farBell,
-	farUser
+	farUser,
+	fasFilter
 	)
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
