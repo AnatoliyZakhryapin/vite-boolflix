@@ -49,6 +49,9 @@ export default {
         },
         overview() {
             return this.item.overview;
+        },
+        genre_ids() {
+            return this.item.genre_ids;
         }
     },
     methods: {
@@ -70,6 +73,12 @@ export default {
                 qtyCicle = 5 - this.vote;
             }
             return qtyCicle;
+        },
+        sliceOverview() {
+            const text = this.overview;
+            const textSlice = text.slice(0, 200);
+            const textToStamp = textSlice + "..."
+            return textToStamp;
         }
     }
 }
@@ -102,7 +111,7 @@ export default {
                             <font-awesome-icon icon="fa-regular fa-star"  v-for="n in getCicleForStar()"/>
                         </span>
                     </li>
-                    <li class="overview">Overview: {{ overview }} </li>
+                    <li class="overview">Overview: {{ sliceOverview() }} </li>
                 </ol>
         </div>
         </div>
