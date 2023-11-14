@@ -47,6 +47,27 @@ export default {
         this.store.series = res.data.results;
       })
     },
+    fetchGenrs() {
+        // get movies genres list
+        axios.get('https://api.themoviedb.org/3/genre/movie/list?',{
+          params: {
+          api_key: this.API_KEY,
+          language: "en",
+        }
+        }).then(res => {
+          this.store.moviesGenresList = res.data.genres;
+        });
+
+        // get  genres list
+        axios.get('https://api.themoviedb.org/3/genre/tv/list?',{
+          params: {
+          api_key: this.API_KEY,
+          language: "en",
+        }
+        }).then(res => {
+          this.store.moviesGenresList = res.data.genres;
+        });
+    },
     getNotActiveInput() {
       if(this.searchText.length < 1) {
         console.log("out")
@@ -58,6 +79,7 @@ export default {
     document.body.addEventListener("click",() => {
       this.getNotActiveInput()
     })
+    this.fetchGenrs()
   }
 }
 
