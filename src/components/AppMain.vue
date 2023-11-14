@@ -66,6 +66,7 @@ export default {
     background-color: $bg-main;
     flex-grow: 1;
     padding: $p-base;
+    padding-top: 100px;
     
     .col:has(> .section-title){
       width: 100%;

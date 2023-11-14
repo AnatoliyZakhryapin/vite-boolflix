@@ -93,7 +93,9 @@
         background-color: $bg-header;
         color: $f-color-base;
         padding: $p-base;
-        
+        position: fixed;
+        z-index: 50;
+        width: 100%;
         a:hover,
         a:hover * {
             color: white;
