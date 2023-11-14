@@ -1,11 +1,14 @@
 <script>
 import LangFlag from 'vue-lang-code-flags'
+import { store } from '../store'
 
 export default {
     data() {
         return {
             posterURL: "https://image.tmdb.org/t/p/",
-            sizePoster: "w342"
+            sizePoster: "w342",
+            genrsName: [],
+            store: store
         }   
     },  
     components: {
@@ -52,7 +55,13 @@ export default {
         },
         genre_ids() {
             return this.item.genre_ids;
-        }
+        },
+        moviesGenresList() {
+            return this.store.moviesGenresList;
+        },
+        TVGenresList() {
+            return this.store.TVGenresList;
+        },
     },
     methods: {
         getPosterPathComplete(size) {
@@ -79,7 +88,34 @@ export default {
             const textSlice = text.slice(0, 200);
             const textToStamp = textSlice + "..."
             return textToStamp;
+        },
+        getGenrsNameToCard() {
+            if(this.item.title) {
+                for(let i = 0; i < this.moviesGenresList.length; i++ ){
+                    for(let x = 0; x < this.genre_ids.length; x++){
+                        if(this.moviesGenresList[i].id === this.genre_ids[x]) {
+                            this.genrsName.push( this.moviesGenresList[i])
+                        }
+                    }
+                }
+            } else if (this.item.name) {
+                for(let i = 0; i < this.TVGenresList.length; i++ ) {
+                    for(let x = 0; x < this.genre_ids.length; x++) {
+                        if(this.TVGenresList[i].id === this.genre_ids[x]) {
+                            this.genrsName.push(this.TVGenresList[i])
+                        }
+                    }
+                }
+            }
+        },
+        getGenNumber(index) {
+            const number = index + 1;
+            return number;
         }
+    },
+    created() {
+        this.getGenrsNameToCard()
+        // console.log("geners name",this.genrsName)
     }
 }
 </script>
@@ -112,6 +148,13 @@ export default {
                         </span>
                     </li>
                     <li class="overview">Overview: {{ sliceOverview() }} </li>
+                    <li class="genrs">
+                        <ul>
+                            <li v-for="(genr, i ) in genrsName">
+                                Geners {{ getGenNumber(i) }}: {{ genr.name }}
+                            </li>
+                        </ul>
+                    </li>
                 </ol>
         </div>
         </div>
