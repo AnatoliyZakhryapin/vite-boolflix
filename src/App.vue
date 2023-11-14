@@ -2,7 +2,7 @@
 
 import AppMain from './components/AppMain.vue';
 import AppHeader from './components/AppHeader.vue';
-import { store, getNotActiveInput } from './store';
+import { store } from './store';
 
 import axios from 'axios'
 
