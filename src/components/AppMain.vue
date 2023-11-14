@@ -17,6 +17,9 @@ export default {
     },
     series: function() {
       return store.series
+    },
+    searchText() {
+      return store.searchText;
     }
   },
   components: {
@@ -27,36 +30,39 @@ export default {
 
 <template>
     <div class="app-main">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1 class="section-title">Movies</h1>
+      <section class="search" v-if="searchText">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1 class="section-title">Movies</h1>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col" v-for="card in movies">
-            <AppCard :item="card"/>
+        <div class="container">
+          <div class="row">
+            <div class="col" v-for="card in movies">
+              <AppCard :item="card"/>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1 class="section-title">Series</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1 class="section-title">Series</h1>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col" v-for="card in series">
-            <AppCard :item="card"/>
+        <div class="container">
+          <div class="row">
+            <div class="col" v-for="card in series">
+              <AppCard :item="card"/>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-</template>
+    
+  </template>
 
 <style lang="scss" scoped>
   @use '../components/style/partial/varibils' as *;
@@ -65,8 +71,15 @@ export default {
     flex-grow: 1;
     padding: $p-base;
     
+    .col:has(> .section-title){
+      width: 100%;
+    }
     .section-title {
-        color: red;
+        color: $f-color-base;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        flex-grow: 1;
+        border-bottom: 1px solid $f-color-base;
     }
 
     .row {
