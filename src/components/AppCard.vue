@@ -46,6 +46,9 @@ export default {
         },
         poster_path() {
             return this.item.poster_path
+        },
+        overview() {
+            return this.item.overview;
         }
     },
     methods: {
@@ -99,6 +102,7 @@ export default {
                             <font-awesome-icon icon="fa-regular fa-star"  v-for="n in getCicleForStar()"/>
                         </span>
                     </li>
+                    <li class="overview">Overview: {{ overview }} </li>
                 </ol>
         </div>
         </div>

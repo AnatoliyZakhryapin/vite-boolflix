@@ -21,7 +21,7 @@
             },
             searchText() {
                 return this.store.searchText;
-            }
+            },
         },
         methods: {
             getActiveInput() {
