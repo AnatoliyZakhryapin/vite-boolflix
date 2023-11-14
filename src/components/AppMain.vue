@@ -31,28 +31,24 @@ export default {
 <template>
     <div class="app-main">
       <section class="search" v-if="searchText">
-        <div class="container">
+        <div class="container movies">
           <div class="row">
             <div class="col">
               <h1 class="section-title">Movies</h1>
             </div>
           </div>
-        </div>
-        <div class="container">
           <div class="row">
             <div class="col" v-for="card in movies">
               <AppCard :item="card"/>
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="container series">
           <div class="row">
             <div class="col">
               <h1 class="section-title">Series</h1>
             </div>
           </div>
-        </div>
-        <div class="container">
           <div class="row">
             <div class="col" v-for="card in series">
               <AppCard :item="card"/>
